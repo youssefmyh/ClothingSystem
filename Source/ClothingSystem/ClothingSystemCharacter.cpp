@@ -45,6 +45,24 @@ AClothingSystemCharacter::AClothingSystemCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
+    
+    /*Init Shirt and Pants mesh**/
+    
+    ShirtMesh = CreateDefaultSubobject<USkeletalMeshComponent>(FName("Shirt Mesh"));
+    ShirtMesh->SetupAttachment(GetMesh());
+    
+    PantsMesh = CreateDefaultSubobject<USkeletalMeshComponent>(FName("Pants Mesh"));
+    PantsMesh->SetupAttachment(GetMesh());
+    
+}
+
+
+void AClothingSystemCharacter::BeginPlay(){
+    
+    Super::BeginPlay();
+    ShirtMesh->SetMasterPoseComponent(GetMesh());
+    PantsMesh->SetMasterPoseComponent(GetMesh());
+    
 }
 
 //////////////////////////////////////////////////////////////////////////

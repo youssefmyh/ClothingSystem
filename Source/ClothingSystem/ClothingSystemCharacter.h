@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Components/SkeletalMeshComponent.h"
 #include "ClothingSystemCharacter.generated.h"
 
 UCLASS(config=Game)
@@ -28,6 +29,18 @@ public:
 	/** Base look up/down rate, in deg/sec. Other scaling may affect final rate. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category=Camera)
 	float BaseLookUpRate;
+    
+    UPROPERTY(EditAnywhere,BlueprintReadWrite)
+    USkeletalMeshComponent *ShirtMesh;
+    
+    UPROPERTY(EditAnywhere,BlueprintReadWrite)
+    USkeletalMeshComponent *PantsMesh;
+    
+   /*Overide Begin Playe*/
+    virtual void BeginPlay() override;
+    
+    
+    
 
 protected:
 
